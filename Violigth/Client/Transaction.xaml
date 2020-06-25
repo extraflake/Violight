@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="Violigth.Client.Transaction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Violigth.Client"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <TextBox Name="TempNameText" HorizontalAlignment="Left" Height="23" Margin="154,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox Name="TempNameCartText" HorizontalAlignment="Left" Height="23" Margin="154,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox Name="TempReceiptText" HorizontalAlignment="Left" Height="23" Margin="54,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="282" Margin="10,46,0,0" VerticalAlignment="Top" Width="513">
+            <Label></Label>
+            <DataGrid Name="SellGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="503" AutoGenerateColumns="False" SelectedCellsChanged="SellGrid_SelectedCellsChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nama" Binding="{Binding Item.Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Jumlah" Binding="{Binding Quantity}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Harga" Binding="{Binding Price}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Sub Total" Binding="{Binding SubTotal}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Action" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="DeleteBtn" Background="#FF8522BD"  BorderBrush="#FF8522BD" Click="RemoveCartBtn_Click" Margin="0,0,9,0">
+                                        <Grid Width="15">
+                                            <materialDesign:PackIcon Kind="RemoveCircle" VerticalAlignment="Center"/>
+                                            <TextBlock HorizontalAlignment="Right" FontFamily="Comic Sans MS" Margin="0,0,28,0"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="328" Margin="523,46,0,0" VerticalAlignment="Top" Width="267">
+            <ComboBox Name="CategoryCombo" SelectionChanged="CategoryCombo_SelectionChanged" Text="Pilih Kategori" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            <Label></Label>
+            <TextBox  Width="267" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ProductText" Text="Cari Produk" PreviewTextInput="ProductText_PreviewTextInput"/>
+            <Label></Label>
+            <DataGrid Name="ProductGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="166" VerticalAlignment="Top" Width="267" AutoGenerateColumns="False" SelectedCellsChanged="ProductGrid_SelectedCellsChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nama" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Jumlah" Binding="{Binding Stock}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Harga" Binding="{Binding Price}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <mah:NumericUpDown Name="QuantityText" Minimum="0" Maximum="10000" Interval="1" Width="266" />
+                <!--<TextBox  Width="150" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="QuantityText" Text="Jumlah Produk" PreviewTextInput="QuantityText_PreviewTextInput"/>-->
+                <TextBox  Width="258" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="QuantityValidationText" Visibility="Hidden"/>
+            </StackPanel>
+            <Label></Label>
+            <Button Name="AddCartBtn"  Background="#FF8522BD"  BorderBrush="#FF8522BD" Click="AddCartBtn_Click" Height="38">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="CartAdd" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Tambah Keranjang" FontFamily="Comic Sans MS"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Margin="10,333,287,10" Orientation="Horizontal">
+            <GroupBox Header="Result" HorizontalAlignment="Left" Height="157" VerticalAlignment="Top" Width="250">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Sub Total"></Label>
+                        <Label Content="Discount"></Label>
+                    </StackPanel>
+                    <Label></Label>
+                    <StackPanel>
+                        <Label Content=":"></Label>
+                        <Label Content=":"></Label>
+                    </StackPanel>
+                    <Label></Label>
+                    <StackPanel>
+                        <TextBox Name="SubTotalText" Width="140" IsEnabled="False"></TextBox>
+                        <TextBox Name="DiscountText" Width="140" KeyUp="DiscountText_KeyUp"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <Label></Label>
+            <GroupBox Header="Pembayaran" HorizontalAlignment="Left" VerticalAlignment="Top" Width="243" Height="157">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Tunai"></Label>
+                        <Label Content="Grand Total"></Label>
+                        <Label Content="Kembali"></Label>
+                    </StackPanel>
+                    <Label></Label>
+                    <StackPanel>
+                        <Label Content=":"></Label>
+                        <Label Content=":"></Label>
+                        <Label Content=":"></Label>
+                    </StackPanel>
+                    <Label></Label>
+                    <StackPanel>
+                        <TextBox Name="CashText" Width="150" KeyUp="CashText_KeyUp"></TextBox>
+                        <TextBox Name="GrandTotalText" Width="150" IsEnabled="False"></TextBox>
+                        <TextBox Name="ChangeText" Width="150" IsEnabled="False"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="111" Margin="523,379,0,0" VerticalAlignment="Top" Width="267">
+            <Button Name="PayCartBtn" Background="#FF8522BD"  BorderBrush="#FF8522BD" Click="PayCartBtn_Click" Height="50">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="Payment" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Bayar" FontFamily="Comic Sans MS" FontSize="30" Foreground="White"/>
+                </Grid>
+            </Button>
+            <Label></Label>
+            <Button Name="CancelCartBtn" Background="#FF8522BD"  BorderBrush="#FF8522BD" Click="CancelCartBtn_Click" Height="50">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="Cancel" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Batal" FontFamily="Comic Sans MS" FontSize="30"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

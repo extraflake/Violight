@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Violigth.Client.Report"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Violigth.Client"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Height="78" Margin="10,30,0,0" VerticalAlignment="Top" Width="314" Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Dari"></Label>
+                <DatePicker Name="FromDate" Width="150"/>
+            </StackPanel>
+            <Label/>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Ke"></Label>
+                <DatePicker Name="ToDate" Width="150" SelectedDateChanged="ToDate_SelectedDateChanged"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="378" Margin="10,113,0,0" VerticalAlignment="Top" Width="780">
+            <DataGrid Name="ReportGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="242" VerticalAlignment="Top" Width="782" AutoGenerateColumns="False" SelectedCellsChanged="ReportGrid_SelectedCellsChanged" Margin="0,0,-2,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Kode Transaksi" Binding="{Binding Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tanggal Transaksi" Binding="{Binding CreateDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Diskon" Binding="{Binding Discount}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Total" Binding="{Binding Total}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Action" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="DetailBTN" Background="#FF8522BD"  BorderBrush="#FF8522BD" Click="DetailBTN_Click" Margin="0,0,9,0">
+                                        <Grid Width="15">
+                                            <materialDesign:PackIcon Kind="Details" VerticalAlignment="Center"/>
+                                            <TextBlock HorizontalAlignment="Right" FontFamily="Comic Sans MS" Margin="0,0,28,0"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label/>
+            <StackPanel Height="136">
+                <GroupBox Width="250" Height="125" VerticalAlignment="Top" HorizontalAlignment="Left" Header="Laporan">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Pemasukan :"/>
+                        <TextBox Name="IncomeText" IsEnabled="False" VerticalAlignment="Top" Width="150"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <TextBox Name="ReceiptTempText" HorizontalAlignment="Left" Height="23" Margin="377,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+
+    </Grid>
+</UserControl>
