@@ -36,7 +36,7 @@ namespace Violigth
         {
             bool status = false;
             var getUser = myContext.Users.SingleOrDefault(x => x.Email.Equals(UsernameText.Text));
-            var getAccount = myContext.Accounts.SingleOrDefault(x => x.Id.Equals(getUser.Email));
+            var getAccount = myContext.Accounts.SingleOrDefault(x => x.Id.Equals(getUser.Id.ToString()));
             var getUserRole = myContext.RoleUsers.Include("User").Include("Role").Where(x => x.User_Id.Equals(getUser.Id)).ToList();
             if (BCrypt.Net.BCrypt.Verify(PasswordText.Password, getAccount.Password))
             {

@@ -15,14 +15,14 @@
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
           UAC Manifest Options
-          If you want to change the Windows User Account Control level replace the 
+          If you want to change the Windows User Account Control level replace the
           requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         If you want to utilize File and Registry Virtualization for backward 
+         If you want to utilize File and Registry Virtualization for backward
          compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
@@ -270,14 +270,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Violigth.exe" size="690128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Violigth.exe" size="687616">
       <assemblyIdentity name="Violigth" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TC7IVXbFpatXHCupCDXLcDn3TlWizZ+NknIhOJdL2bQ=</dsig:DigestValue>
+        <dsig:DigestValue>SD8Uzgo33TFalOA2mM9BklabUXLDr03qzUfOUS2ULFg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -302,13 +302,13 @@
       <dsig:DigestValue>GjoO1Kd8ofNLfUMVp2Wf2KV7qQsQpY2RBxVHSctHaqg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Violigth.exe.config" size="1558">
+  <file name="Violigth.exe.config" size="1571">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Mq5J0lQU6ToC1AhWpQX6DihDbFNtv+OfzpcOhVhxp78=</dsig:DigestValue>
+      <dsig:DigestValue>spaSqxdnOB+z8DjePRI7kvd25oZp0HmJOVVF5NchhKU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

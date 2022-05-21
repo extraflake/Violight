@@ -54,7 +54,7 @@ namespace Violigth.Client
             else
             {
                 var getUser = myContext.Users.SingleOrDefault(x => x.Email.Equals(Email.Text));
-                var check = myContext.Accounts.SingleOrDefault(x => x.Id.Equals(getUser.Email));
+                var check = myContext.Accounts.SingleOrDefault(x => x.Id.Equals(getUser.Id.ToString()));
                 if (BCrypt.Net.BCrypt.Verify(OldPassword.Password, check.Password))
                 {
                     string myPassword = NewPassword.Password;

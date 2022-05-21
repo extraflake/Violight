@@ -30,19 +30,20 @@ namespace Violigth
         private void RequestBTN_Click(object sender, RoutedEventArgs e)
         {
             MyContext myContext = new MyContext();
-            var check = myContext.Accounts.Find(UsernameText.Text);
+            var check = myContext.Users.SingleOrDefault(x => x.Email == UsernameText.Text);
             if (check != null)
             {
+                var data = myContext.Accounts.Find(check.Id.ToString());
                 Master master = new Master();
                 string myPassword = "V10l19h7";
                 string mySalt = BCrypt.Net.BCrypt.GenerateSalt();
                 string myHash = BCrypt.Net.BCrypt.HashPassword(myPassword, mySalt);
-                check.Password = myHash;
+                data.Password = myHash;
                 myContext.Entry(check).State = EntityState.Modified;
                 var result = myContext.SaveChanges();
                 if (result > 0)
                 {
-                    master.SendEmail(check.Id, check.Password);
+                    // master.SendEmail(check.Id, check.Password);
                     MessageBox.Show("Password sudah direset ke awal");
                     UsernameText.Text = "";
                     this.Close();

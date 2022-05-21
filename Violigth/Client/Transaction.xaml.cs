@@ -400,20 +400,22 @@ namespace Violigth.Client
         {
             if (e.Key == Key.Enter)
             {
-                try
+                var getCart = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id.Equals(2)).ToList();
+                var getSubTotalJasa = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Name.Equals("Jasa")).ToList();
+                double resultJasa = getSubTotalJasa.Sum(x => x.Price * x.Quantity);
+                var getSubTotalProduct = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Name != "Jasa").ToList();
+                double resultProduct = getSubTotalProduct.Sum(x => x.Price * x.Quantity);
+                if (getSubTotalJasa.Count() == 0)
                 {
-                    var getCart = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id.Equals(2)).ToList();
-                    var getSubTotalJasa = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id.Equals(2)).Sum(x => x.Price * x.Quantity);
-                    var getSubTotalNonJasa = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id != 2).Sum(x => x.Price * x.Quantity);
-                    double GrandTotalJasa = Convert.ToDouble(getSubTotalJasa) - (Convert.ToDouble(getSubTotalJasa) * 0.10);
-                    double GrandTotalNonJasa = Convert.ToDouble(getSubTotalNonJasa) + GrandTotalJasa;
-                    GrandTotalText.Text = GrandTotalNonJasa.ToString();
+                    GrandTotalText.Text = resultProduct.ToString();
                 }
-                catch (Exception)
+                else if (getSubTotalProduct.Count() == 0)
                 {
-                    var getCart = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id.Equals(2)).ToList();
-                    var getSubTotalJasa = myContext.Sells.Where(x => x.Receipt.Id.Equals(TempReceiptText.Text) && x.Item.Category.Type.Id.Equals(2)).Sum(x => x.Price * x.Quantity);
-                    GrandTotalText.Text = (Convert.ToDouble(getSubTotalJasa) - (Convert.ToDouble(getSubTotalJasa) * 0.10)).ToString();
+                    GrandTotalText.Text = (Convert.ToDouble(resultJasa) - (Convert.ToDouble(resultJasa) * (Convert.ToDouble(DiscountText.Text) / 100))).ToString();
+                }
+                else
+                {
+                    GrandTotalText.Text = (Convert.ToDouble(resultProduct) + (Convert.ToDouble(resultJasa) - (Convert.ToDouble(resultJasa) * (Convert.ToDouble(DiscountText.Text) / 100)))).ToString();
                 }
             }
         }
