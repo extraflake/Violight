@@ -54,6 +54,30 @@
             </StackPanel>
         </StackPanel>
         <TextBox Name="ReceiptTempText" HorizontalAlignment="Left" Height="23" Margin="377,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-
+        <Button Content="Export" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="274,366,0,0" Click="Button_Click"/>
+        <DataGrid Name="ReportDetailGrid" IsReadOnly="True" Visibility="Hidden" HorizontalAlignment="Left" Height="242" VerticalAlignment="Top" Width="782" AutoGenerateColumns="False" SelectedCellsChanged="ReportGrid_SelectedCellsChanged" Margin="0,0,-2,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kode Transaksi" Binding="{Binding Receipt.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tanggal Transaksi" Binding="{Binding CreateDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nama Produk" Binding="{Binding Item.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jumlah Produk" Binding="{Binding Quantity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Discount" Binding="{Binding Receipt.Discount}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Total Harga" Binding="{Binding SubTotal}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Action" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="DetailBTN" Background="#FF8522BD" BorderBrush="#FF8522BD" Click="DetailBTN_Click" Margin="0,0,9,0">
+                                    <Grid Width="15">
+                                        <materialDesign:PackIcon Kind="Details" VerticalAlignment="Center"/>
+                                        <TextBlock HorizontalAlignment="Right" FontFamily="Comic Sans MS" Margin="0,0,28,0"/>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

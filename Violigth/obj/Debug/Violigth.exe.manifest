@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Violigth.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Violigth.exe" version="1.0.0.15" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Violigth" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -270,14 +270,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Violigth.exe" size="687616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Violigth.exe" size="694784">
       <assemblyIdentity name="Violigth" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SD8Uzgo33TFalOA2mM9BklabUXLDr03qzUfOUS2ULFg=</dsig:DigestValue>
+        <dsig:DigestValue>EnnGVnD161NVbeO246vcG77oiBIxWpV+PMXIvFX2rCQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -302,13 +302,13 @@
       <dsig:DigestValue>GjoO1Kd8ofNLfUMVp2Wf2KV7qQsQpY2RBxVHSctHaqg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Violigth.exe.config" size="1571">
+  <file name="Violigth.exe.config" size="1577">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>spaSqxdnOB+z8DjePRI7kvd25oZp0HmJOVVF5NchhKU=</dsig:DigestValue>
+      <dsig:DigestValue>lXqdVtZs9ujoBIsKwwbujDU1lPeRsv9/PjhBHY7fT5o=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

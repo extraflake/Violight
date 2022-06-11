@@ -43,7 +43,6 @@ namespace Violigth
                 var result = myContext.SaveChanges();
                 if (result > 0)
                 {
-                    // master.SendEmail(check.Id, check.Password);
                     MessageBox.Show("Password sudah direset ke awal");
                     UsernameText.Text = "";
                     this.Close();

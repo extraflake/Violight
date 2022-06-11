@@ -157,7 +157,6 @@ C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debu
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Client\Type.baml
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\MainWindow.baml
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.g.resources
-C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.Migrations.addnewdb.resources
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.Properties.Resources.resources
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.csproj.GenerateResource.cache
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.csproj.CoreCompileInputs.cache
@@ -166,3 +165,4 @@ C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debu
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.csproj.CopyComplete
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.exe
 C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.pdb
+C:\Users\Naufal Aji Wibowo\Documents\GitHub\Violight2\Violight\Violigth\obj\Debug\Violigth.Migrations.initial.resources

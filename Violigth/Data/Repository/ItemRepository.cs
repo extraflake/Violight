@@ -31,7 +31,7 @@ namespace Violigth.Data.Repository
 
         public IEnumerable<Item> Get()
         {
-            var get = myContext.Items.Include("Category").ToList().OrderBy(x => x.Name).OrderBy(x => x.Category.Name);
+            var get = myContext.Items.Include("Category").ToList().OrderBy(x => x.Stock);
             return get;
         }
 

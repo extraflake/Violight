@@ -14,7 +14,8 @@ namespace Violigth.Data.Model
     public class Category : BaseModel
     {
         public string Name { get; set; }
-
+        [ForeignKey("Type")]
+        public int Type_Id { get; set; }
         public virtual Type Type { get; set; }
 
         public Category() { }
@@ -22,6 +23,7 @@ namespace Violigth.Data.Model
         public Category(CategoryVM categoryVM)
         {
             this.Name = categoryVM.Name;
+            this.Type_Id = categoryVM.Type_Id;
             this.CreateDate = DateTimeOffset.Now.LocalDateTime;
         }
 

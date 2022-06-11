@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Violigth.Data.Context;
+
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace Violigth.Client
 {
@@ -56,7 +61,9 @@ namespace Violigth.Client
                 try
                 {
                     var get = myContext.Receipts.Where(x => x.CreateDate.Day.Equals(to)).ToList();
+                    var detailReceipt = myContext.Sells.Include("Item").Include("Receipt").Where(x => x.CreateDate.Day.Equals(to)).ToList();
                     var getIncome = myContext.Receipts.Where(x => x.CreateDate.Day.Equals(to)).Sum(x => x.Total);
+                    ReportDetailGrid.ItemsSource = detailReceipt;
                     ReportGrid.ItemsSource = get;
                     IncomeText.Text = getIncome.ToString();
                 }
@@ -69,7 +76,9 @@ namespace Violigth.Client
                 try
                 {
                     var get = myContext.Receipts.Where(x => x.CreateDate.Day >= from && x.CreateDate.Day <= to).ToList();
+                    var detailReceipt = myContext.Sells.Include("Item").Include("Receipt").Where(x => x.CreateDate.Day >= from && x.CreateDate.Day <= to).ToList();
                     var getIncome = myContext.Receipts.Where(x => x.CreateDate.Day >= from && x.CreateDate.Day <= to).Sum(x => x.Total);
+                    ReportDetailGrid.ItemsSource = detailReceipt;
                     ReportGrid.ItemsSource = get;
                     IncomeText.Text = getIncome.ToString();
                 }
@@ -88,6 +97,32 @@ namespace Violigth.Client
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < ReportDetailGrid.Columns.Count - 1; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = ReportDetailGrid.Columns[j].Header;
+            }
+
+            for (int i = 0; i < ReportDetailGrid.Columns.Count - 1; i++)
+            {
+                for (int j = 0; j < ReportDetailGrid.Items.Count; j++)
+                {
+                    TextBlock b = ReportDetailGrid.Columns[i].GetCellContent(ReportDetailGrid.Items[j]) as TextBlock;
+                    Range myRange = (Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
             }
         }
     }
